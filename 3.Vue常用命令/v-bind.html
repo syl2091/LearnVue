@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-bind:title="title">鼠标悬停查看消息！</div>
+    <div>
+        <a v-bind:href="href">去慕课网</a>
+    </div>
+    <div>
+        <img v-bind:src="src"></div>
+</div>
+<div>
+    <button v-bind:disabled="disabled">禁用按钮</button>
+</div>
+</div>
+
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            title: "您好，我是小慕，欢迎来到慕课网！希望你可以在慕课网学到更多的东西！",
+            href: "https://www.imooc.com/",
+            src:"http://img2.mukewang.com/szimg/5df1deec09ba554712000676-360-202.png",
+            disabled:true
+        }
+    })
+</script>
+</html>

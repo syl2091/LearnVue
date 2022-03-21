@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .classA {
+        font-size: 50px;
+    }
+</style>
+<body>
+<div id="app">
+    <div v-bind:class="[classA, classB]">Hello !</div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            classA: 'classA',
+            classB: 'classB1 classB2'
+        }
+    })
+</script>
+</html>

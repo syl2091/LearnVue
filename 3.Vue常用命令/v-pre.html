@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--该指令会跳过所在元素和它的子元素的编译过程，也就是把这个节点及其子节点当作一个静态节点来处-->
+    <div v-pre>当前输入的年龄是: {{age}}</div>
+    <div>当前输入的年龄是: {{age}}</div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            age:10
+        }
+    })
+</script>
+</html>

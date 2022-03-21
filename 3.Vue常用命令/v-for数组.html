@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in music">{{item.name}}</li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            music: [
+                {name: "青花瓷"},
+                {name: "阳光总在分雨后"},
+                {name: "十年"}
+            ]
+        }
+    })
+</script>
+</html>

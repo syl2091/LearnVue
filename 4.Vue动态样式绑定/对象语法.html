@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
+<body>
+<div id="app">
+    <div v-bind:class="{hide:isHide}">Hello!</div>
+</div>
+
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            isHide:true
+        }
+    })
+</script>
+</html>
