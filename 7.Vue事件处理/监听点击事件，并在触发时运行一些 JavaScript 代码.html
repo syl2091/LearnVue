@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>商品数量 {{count}}</div>
+    <button v-on:click="count = count + 1"> 加一个</button>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            count: 0
+        }
+    })
+</script>
+</html>

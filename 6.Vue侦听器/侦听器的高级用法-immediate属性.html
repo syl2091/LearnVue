@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: #ccc">
+<div id="app">
+    <div>商品名称：<input v-model="name"/></div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            name: "1231",
+        },
+        watch: {
+            name: {
+                handler(newVal, oldVal) {
+                    console.log(newVal)
+                },
+                // 代表在wacth里声明了name这个方法之后立即先去执行一次handler方法
+                immediate: true
+            },
+
+        }
+    })
+</script>
+</html>

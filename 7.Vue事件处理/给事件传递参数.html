@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <div>商品数量 {{count}}</div>
+        <button v-on:click="setCount(10)"> 设置为 10 个 </button>
+        <button v-on:click="setCount(0)"> 设置为 0 个 </button>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            count: 0
+        },
+        methods:{
+            setCount(count,e){
+                this.count = count
+            }
+        }
+    })
+</script>
+</html>

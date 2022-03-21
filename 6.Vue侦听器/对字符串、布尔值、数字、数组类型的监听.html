@@ -43,10 +43,10 @@
         },
         watch: {
             count: function (newV, oldV) {
-                if (newVal > 10) {
+                if (newV > 10) {
                     this.isMax = true
                 }
-                if (newVal < 0) {
+                if (newV < 0) {
                     this.count = 0
                 }
             },
