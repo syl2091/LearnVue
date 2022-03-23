@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <div>
+    <label for="food">食品</label><input type="checkbox" id="food" value="食品" v-model="types"/>
+    <label for="book">图书</label><input type="checkbox" id="book" value="图书" v-model="types"/>
+    <label for="clothes">衣服</label><input type="checkbox" id="clothes" value="衣服" v-model="types"/>
+    <br>
+    <span>类型: {{types}}</span>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      types: []
+    },
+  })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-component>
+        <!-- 使用 v-slot 接收具名插槽 detail 的数据，并把它命名为  slotProps-->
+        <template v-slot:detail="slotProps">
+            <br/>
+            <!-- 使用 插槽 detail 的数据-->
+            我叫：{{slotProps.detail.name}}，我的爱好是：{{slotProps.detail.love}}
+        </template>
+    </my-component>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    Vue.component('myComponent', {
+        // 在默认插槽中传入数据 detail
+        template: '<div>hello!<slot :detail="detail" name="detail"></slot></div>',
+        data() {
+            return {
+                detail: {
+                    name: '句号',
+                    love: 'coding'
+                }
+            }
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {}
+    })
+</script>
+</html>

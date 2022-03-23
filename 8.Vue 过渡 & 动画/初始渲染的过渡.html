@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .hello{
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      margin: auto;
+    }
+    .v-appear-class{
+      opacity: 0;
+    }
+    .v-appear-to-class{
+      opacity: 1;
+    }
+    .v-appear-active-class{
+      transition: all 2s;
+    }
+
+  </style>
+</head>
+<body>
+<div id = "app">
+  <button v-on:click = "show = !show">隐藏</button>
+  <transition
+          appear
+          appear-class="v-appear-class"
+          appear-to-class="v-appear-to-class"
+          appear-active-class="v-appear-active-class"
+          v-on:before-appear="beforeAppear"
+          v-on:appear="appear"
+          v-on:after-appear="afterAppear"
+          v-on:appear-cancelled="appearCancelled"
+  >
+    <p v-show = "show" class="hello">Hello ！</p>
+  </transition>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type = "text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      show:true
+    },
+    methods: {
+      beforeAppear() {
+        console.log('beforeAppear')
+      },
+      appear() {
+        console.log('appear')
+      },
+      afterAppear() {
+        console.log('afterAppear')
+      },
+      appearCancelled() {
+        console.log('appearCancelled')
+      },
+    }
+  });
+</script>
+</html>

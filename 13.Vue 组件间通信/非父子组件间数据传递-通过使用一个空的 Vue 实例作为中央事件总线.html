@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <person @modify="modify"></person>
+    <detail :name="name" :count="count"></detail>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    <!-- 通过使用一个空的 Vue 实例作为中央事件总线-->
+    let bus = new Vue()
+    Vue.prototype.bus = bus
+    Vue.component('person', {
+        template: '<div><div>姓名：<input type="text" v-model="name"/></div><div>年龄：<input type="text" v-model="count"/></div><button @click="modify">修改</button></div>',
+        data() {
+            return {
+                name: "句号",
+                count: 18
+            }
+        },
+        methods:{
+            modify(){
+                this.bus.$emit('modify',{name:this.name,count: this.count})
+            }
+        }
+    })
+    Vue.component('detail',{
+        template: '<div>我是:{{name}},我今年{{count}}岁</div>',
+
+        data() {
+            return {
+                name: '句号',
+                count: 18
+            }
+        },
+        mounted() {
+            this.bus.$on('modify', (detail) => {
+                this.name = detail.name
+                this.count = detail.count
+            })
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                name: '句号',
+                count: 18
+            }
+        },
+        methods: {
+            modify(detail) {
+                console.log(detail)
+                this.name = detail.name
+                this.count = parseInt(detail.count)
+            }
+        }
+    })
+</script>
+</html>

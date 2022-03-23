@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .hello{
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<div id = "app">
+  <button @click="show = !show">
+    切换显示状态
+  </button>
+  <transition
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:leave="leave"
+          v-bind:css="false"
+  >
+    <p v-if="show">
+      Demo
+    </p>
+  </transition>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script type="text/javascript" src="../vue.js"></script>
+<script type = "text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      show:false
+    },
+    methods: {
+      beforeEnter: function (el) {
+        el.style.opacity = 0
+        el.style.transformOrigin = 'left'
+      },
+      enter: function (el, done) {
+        Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+        Velocity(el, { fontSize: '1em' }, { complete: done})
+      },
+      leave: function (el, done) {
+        Velocity(el, { translateX: '20px', rotateZ: '45deg' }, { duration: 600 })
+        Velocity(el, { rotateZ: '90deg' }, { loop: 3 })
+        Velocity(el, {
+          rotateZ: '45deg',
+          translateY: '30px',
+          translateX: '30px',
+          opacity: 0
+        }, { complete: done })
+      }
+    }
+  });
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    Vue.component('myComponent', {
+        template: '<div><div>{{ count }}</div><button @click="add">添加次数</button></div>',
+        data() {
+            return {
+                count: 10
+            }
+        },
+        methods: {
+            add() {
+                this.count = this.count + 1;
+            }
+        },
+        created() {
+            console.log('组件myComponent：created')
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .fade-enter-active {
+      transition: all .3s ease;
+    }
+    .fade-leave-active {
+      transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .fade-enter, .fade-leave-to {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<div id = "app">
+  <button v-on:click = "show = !show">{{ show ? '显示' : '隐藏'}}</button>
+  <transition name = "fade">
+    <p v-show = "true" >Hello ！</p>
+  </transition>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type = "text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      show:true
+    }
+  });
+</script>
+</html>

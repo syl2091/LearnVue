@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <select v-model="company">
+            <option value="">请选择</option>
+            <option>顺丰</option>
+            <option>中通</option>
+            <option>圆通</option>
+        </select>
+        <span>选项:{{company}}</span>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            company: '中通'
+        }
+    })
+</script>
+</html>
