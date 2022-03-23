@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <keep-alive>
+        <component :is="currentView"></component>
+    </keep-alive>
+    <button @click="changeView('A')">切换到A</button>
+    <button @click="changeView('B')">切换到B</button>
+    <button @click="changeView('C')">切换到C</button>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    <!--activated 和 deactivated 和我们之前学习的生命周期函数一样，也是组件的生命周期函数。不过， activated 和 deactivated 只在 <keep-alive> 内的所有嵌套组件中触发。activated：进入组件时触发。deactivated：退出组件时触发。-->
+    Vue.component('ComponentA',{
+        template:'<div>组件A</div>',
+        activated() {
+            console.log('组件A 被添加')
+        },
+        deactivated() {
+            console.log('组件A 被移除')
+        }
+    })
+    Vue.component('ComponentB',{
+        template:'<div>组件B</div>',
+        activated() {
+            console.log('组件B 被添加')
+        },
+        deactivated() {
+            console.log('组件B 被移除')
+        }
+    })
+    Vue.component('ComponentC',{
+        template:'<div>组件C</div>',
+        activated() {
+            console.log('组件C 被添加')
+        },
+        deactivated() {
+            console.log('组件C 被移除')
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                currentView: 'ComponentB'
+            }
+        },
+        methods: {
+            changeView(name) {
+                this.currentView = `Component${name}`
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        我是：{{name}}， 年龄：{{year}}
+    </div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    <!--mixin 本质上就是一个 Object 对象，它和 vue 实例上的属性一致，包含 data、methods、computed、watch、生命周期函数等等：-->
+    //定义一个mimin
+    var myMixin = {
+        data(){
+            return {
+                name: '句号'
+            }
+        },
+        created: function () {
+            this.mixinFun()
+        },
+        methods: {
+            mixinFun: function () {
+                console.log('mixin function')
+            }
+        }
+    };
+
+    var vm = new Vue({
+        el: '#app',
+        // 使用mixin
+        mixins:[myMixin],
+        data() {
+            return {
+                year: '18'
+            }
+        }
+    })
+</script>
+</html>

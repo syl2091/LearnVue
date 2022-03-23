@@ -5,6 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="app">
+    <component :is="currentView"></component>
+    <button @click="changeView('A')">切换到A</button>
+    <button @click="changeView('B')">切换到B</button>
+    <button @click="changeView('C')">切换到C</button>
+</div>
 </body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    <!--通过使用保留的 <component> 元素，动态地把组件名称绑定到它的 is 特性，可以实现动态组件-->
+    Vue.component('ComponentA',{
+        template:'<div>组件A</div>'
+    })
+    Vue.component('ComponentB',{
+        template:'<div>组件B</div>'
+    })
+    Vue.component('ComponentC',{
+        template:'<div>组件C</div>'
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                currentView: 'ComponentB'
+            }
+        },
+        methods: {
+            changeView(name) {
+                this.currentView = `Component${name}`
+            }
+        }
+    })
+</script>
 </html>

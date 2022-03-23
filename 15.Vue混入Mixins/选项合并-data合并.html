@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+  var myMixin = {
+    data(){
+      return {
+        isOpen: false,
+        date: '2020-02-02',
+        desc: {
+          title: 'Mixins 基础教程',
+          desc: '本教程将讲解如何使用 mixins',
+          author: {
+            name: '慕课网',
+            location: '北京'
+          }
+        }
+      }
+    }
+  };
+  var vm = new Vue({
+    el: '#app',
+    mixins:[myMixin],
+    data: {
+        isOpen: true,
+        date: new Date().toLocaleString(),
+        desc: {
+          author: {
+            name: 'Imooc',
+            age: '20'
+          }
+        }
+    },
+    created() {
+      console.log(this._data)
+    }
+  })
+</script>
+</html>
