@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  mixin 全局混入 示例
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+  <!--使用全局混入，它将影响每一个之后创建的 Vue 实例-->
+  Vue.mixin({
+    created() {
+      console.log('全局mixin created')
+    },
+    methods: {
+      sayHello() {
+        console.log('hello 大家好')
+      }
+    }
+  })
+
+  var vm = new Vue({
+    el: '#app'
+  })
+  vm.sayHello()
+</script>
+</html>

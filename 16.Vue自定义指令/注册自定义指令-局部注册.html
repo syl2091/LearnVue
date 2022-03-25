@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <label>姓名：</label>
+        <input id="name"  type="text"/>
+    </div>
+    <div>
+        <label>年龄：</label>
+        <input id="age" v-focus type="text"/>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+   <!--局部注册-->
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        directives: {
+            focus: {
+                inserted: function (el) {
+                    el.focus()
+                }
+            }
+        }
+    })
+</script>
+</html>
