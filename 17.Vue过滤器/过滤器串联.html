@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <label>英文名：</label>
+        <input type="text" v-model="name"/>
+    </div>
+    <div>{{ name | trim | capitalize}}</div>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    Vue.filter('capitalize', function (value) {
+        if (!value) return ''
+        value = value.toString()
+        return value.charAt(0).toUpperCase() + value.slice(1)
+    })
+    Vue.filter('trim', function (value) {
+        return value.replace(/^\s+|\s+$/g, "")
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            name: ''
+        }
+    })
+</script>
+</html>

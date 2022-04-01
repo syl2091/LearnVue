@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <anchored-heading :level="1" href="#hello-wold">Hello world!</anchored-heading>
+    <anchored-heading :level="2" href="#hello-wold">Hello world!</anchored-heading>
+    <anchored-heading :level="3" href="#hello-wold">Hello world!</anchored-heading>
+    <anchored-heading :level="4" href="#hello-wold">Hello world!</anchored-heading>
+    <anchored-heading :level="5" href="#hello-wold">Hello world!</anchored-heading>
+    <anchored-heading :level="6" href="#hello-wold">Hello world!</anchored-heading>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+            return createElement(
+                'h' + this.level,   // 标签名称
+
+                [createElement('a', {
+                    attrs: {
+                        href: this.href
+                    }
+                },this.$slots.default)]
+
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            },
+            href: {
+                type: String,
+                default: ''
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <button @click="jump('index')">首页</button>
+        <button @click="jump('article')">文章</button>
+    </div>
+    <router-view></router-view>
+</div>
+</body>
+<script type="text/javascript" src="../../vue.js"></script>
+<script type="text/javascript" src="../../vue-router.js"></script>
+<script type="text/javascript">
+    //跟 router.push 很像，唯一的不同就是，它不会向 history 添加新记录，而是跟它的方法名一样 —— 替换掉当前的 history 记录
+    const Index = Vue.component('index', {
+        template: '<div>Hello，欢迎使用慕课网学习 Vue 教程！</div>',
+    })
+
+    const Article = Vue.component('myArticle', {
+        template: `<ul><li>1. Vue 计算属性的学习</li><li>2. Vue 侦听器的学习</li></ul>`,
+    })
+
+
+    const VueArticle = Vue.component('vueArticle', {
+        template: `<ul><li>1. Vue 基础学习</li><li>2. Vue 项目实战</li></ul>`,
+    })
+
+    const ReactArticle = Vue.component('reactArticle', {
+        template: `<ul><li>1. React 基础学习</li><li>2. React 项目实战</li></ul>`,
+    })
+
+    const routes = [
+        {path: '/index', component: Index},
+        {path: '/article', component: Article}
+    ]
+
+    const router = new VueRouter({
+        routes: routes
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        router,
+        data() {
+            return {}
+        },
+        methods: {
+            jump(name) {
+                this.$router.replace(name)
+            }
+        }
+    })
+</script>
+</html>
