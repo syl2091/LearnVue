@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <router-link to="/">首页</router-link>
+    </div>
+    <router-view></router-view>
+</div>
+</body>
+<script type="text/javascript" src="../../vue.js"></script>
+<script type="text/javascript" src="../../vue-router.js"></script>
+<script type="text/javascript">
+    const Detail = Vue.component('detail', {
+        template: '<div>这是 {{$route.params.syl}} 的详情页面</div>'
+    })
+
+    const Article = Vue.component('myArticle', {
+        template: `<ul>
+              <li>
+                <router-link :to="{name: 'detail', params: {syl: 'Vue 计算属性的学习'}}">
+                  1. Vue 计算属性的学习
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="{name: 'detail', params: {syl: 'React 基础学习'}}">
+                  2. React 基础学习
+                </router-link>
+              </li>
+            </ul>`
+    })
+
+    const routes = [
+        {path: '/detail/:name', name: 'detail', component: Detail},
+        {path: '/', component: Article}
+    ]
+
+    const router = new VueRouter({
+        routes: routes
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        router: router,
+        data() {
+            return {}
+        }
+    })
+</script>
+</html>

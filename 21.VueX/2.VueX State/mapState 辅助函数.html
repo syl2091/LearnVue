@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div> 我是： {{ name }}，我的今年：{{ age }}</div>
+    <div>{{countPlusAge}}</div>
+</div>
+</body>
+<script type="text/javascript" src="../../vue.js"></script>
+<script type="text/javascript" src="../../vuex.js"></script>
+<script type="text/javascript">
+    const store = new Vuex.Store({
+        state: {
+            name: '句号',
+            age: 18
+
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        store,
+        data() {
+            return {
+                count: 1
+            }
+        },
+        computed: Vuex.mapState({
+            // 箭头函数可使代码更简练
+            name: state => state.name,
+            // 传字符串参数 'age' 等同于 `state => state.age`
+            age: 'age',
+            // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+            countPlusAge(state) {
+                return state.age + this.count
+            }
+
+        })
+    })
+</script>
+</html>

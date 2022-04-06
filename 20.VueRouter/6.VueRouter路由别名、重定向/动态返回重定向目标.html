@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <router-link to="/index">首页</router-link>
+        <router-link to="/article">文章</router-link>
+    </div>
+    <router-view></router-view>
+</div>
+</body>
+<script type="text/javascript" src="../../vue.js"></script>
+<script type="text/javascript" src="../../vue-router.js"></script>
+<script type="text/javascript">
+    const Index = Vue.component('index', {
+        template: '<div>Hello，欢迎使用慕课网学习 Vue 教程！</div>',
+    })
+
+    const Article = Vue.component('myArticle', {
+        template: `<ul><li>1. Vue 计算属性的学习</li><li>2. React 基础学习</li></ul>`,
+    })
+    const routes = [
+        {
+            path: '/', redirect: to => {
+                if (Math.random() > 0.5) {
+                    console.log('index')
+                    return '/index'
+                } else {
+                    return {name: 'article'}
+                }
+            }
+        },
+        {path: '/index', component: Index, name: 'index'},
+        {path: '/article', component: Article, name: 'article'}
+    ]
+
+    const router = new VueRouter({
+        routes: routes
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        router: router,
+        data() {
+            return {}
+        }
+    })
+</script>
+</html>
